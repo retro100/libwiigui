@@ -9,6 +9,11 @@ endif
 
 include $(DEVKITPPC)/wii_rules
 
+# override the bin2o definition for disable header creation
+define bin2o
+	bin2s -a 32 $< | $(AS) -o $(<F).o
+endef
+
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output
 # BUILD is the directory where object files & intermediate files will be placed
